@@ -71,7 +71,7 @@ export const createUserOrder = inngest.createFunction(
     {
         id: 'create-user-order',
         batchEvents: {
-            maxSize: 25,
+            maxSize: 5,
             timeout: '5s'
         }
     },
@@ -90,7 +90,7 @@ export const createUserOrder = inngest.createFunction(
         })
 
         await connectDB()
-        await Order .insertMany(orders)
+        await Order.insertMany(orders)
 
         return {
             success: true,
