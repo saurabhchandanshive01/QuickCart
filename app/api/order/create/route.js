@@ -27,7 +27,7 @@ export async function POST(request) {
 
             const product = await Product.findById(item.product);
 
-            return (await acc) + product.offerPrice * item.quantity;
+            return await acc + product.offerPrice * item.quantity;
 
         }, 0)
 
