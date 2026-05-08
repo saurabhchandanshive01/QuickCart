@@ -9,9 +9,9 @@ export const inngest = new Inngest({ id: "quickcart-next" });
 // Inngest Function to save user data to a database
 export const syncUserCreation = inngest.createFunction(
     {
-        id: 'sync-user-from-clerk'
+        id: 'sync-user-from-clerk',
+        triggers: [{ event: 'clerk/user.created' }],
     },
-    { event: 'clerk/user.created' },
     async ({ event }) => {
 
         const { id, first_name, last_name, email_addresses, image_url } = event.data
@@ -31,9 +31,9 @@ export const syncUserCreation = inngest.createFunction(
 // Inngest Function to update user data in database
 export const syncUserUpdation = inngest.createFunction(
     {
-        id: 'update-user-from-clerk'
+        id: 'update-user-from-clerk',
+        triggers: [{ event: 'clerk/user.updated' }],
     },
-    { event: 'clerk/user.updated' },
     async ({ event }) => {
 
         const { id, first_name, last_name, email_addresses, image_url } = event.data
@@ -53,9 +53,9 @@ export const syncUserUpdation = inngest.createFunction(
 // Inngest Function to delete user from database
 export const syncUserDeletion = inngest.createFunction(
     {
-        id: 'delete-user-with-clerk'
+        id: 'delete-user-with-clerk',
+        triggers: [{ event: 'clerk/user.deleted' }],
     },
-    { event: 'clerk/user.deleted' },
     async ({ event }) => {
 
         const { id } = event.data
@@ -98,3 +98,5 @@ export const createUserOrder = inngest.createFunction(
         }
     }
 )
+=======
+>>>>>>> c9c2ef39a38c9350d07de25cc708a2124d6fa723
